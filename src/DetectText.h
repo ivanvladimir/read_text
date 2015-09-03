@@ -128,6 +128,7 @@ private:
 	float spellCheck(string& str, string& output, int method);
 
 	void speakResults(vector<string>& text, vector<float>& scores, int max);
+	void printResults(vector<string>& text, vector<float>& scores, int max);
 
 	Mat filterPatch(const Mat& patch);
 

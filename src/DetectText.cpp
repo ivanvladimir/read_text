@@ -78,6 +78,7 @@ void DetectText::detect() {
 	}
 
 	if (speak_) speakResults(wordsBothSides_, boxesScores_, 0);
+	printResults(wordsBothSides_, boxesScores_, 0);
 
 	textDisplayOffset_ = 1;
 }
@@ -1048,6 +1049,21 @@ void DetectText::speakResults(vector<string>& text, vector<float>& scores, int m
 		else break;
 	}
 }
+
+void DetectText::printResults(vector<string>& text, vector<float>& scores, int max=0) {
+	assert(text.size() == scores.size());
+	stringstream ss;
+
+	for (size_t i = 0; i < text.size(); i++) {
+		if ((max == 0) || ((int) i < max)) {
+			// Sleep for 0.5 seconds between phrases.
+			cout << text[i] << "\n";
+		}
+		else break;
+	}
+}
+
+
 
 Mat DetectText::filterPatch(const Mat& patch) {
 	Mat result;
